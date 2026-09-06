@@ -7,7 +7,7 @@
 - `source`：可维护的 React/Vinext 源码、样式、图片与构建配置。
 - `main`：GitHub Pages 当前读取的静态发布文件。
 
-日常修改请在 `source` 分支进行。该分支的 Pages 工作流会构建 `dist/client`；若仓库的 Pages Source 设为 **GitHub Actions**，推送后会自动发布。
+日常修改请在 `source` 分支进行。`source` 与线上静态文件相互独立，因此推送源码不会直接改动当前网站。
 
 ## 本地查看
 
@@ -20,9 +20,9 @@ npm run dev
 
 ## 发布到 GitHub Pages
 
-1. 将源码修改提交到 `source` 分支。
-2. 进入仓库 **Settings → Pages**，将 **Source** 设为 **GitHub Actions**。
-3. 推送 `source` 后，`.github/workflows/pages.yml` 会自动构建并发布网站。
+当前网站由 `main` 分支中的静态文件发布。修改 `source` 后，请先在本地运行构建，再将生成的页面成品同步到 `main`。
+
+如果以后希望由 `source` 自动发布，需要同时把 Pages 工作流的触发分支和 `github-pages` Environment 的允许分支改为 `source`。
 
 发布地址为 `https://kaixuewen.github.io/`。
 
